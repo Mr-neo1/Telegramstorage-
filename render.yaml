@@ -1,0 +1,22 @@
+# Render Blueprint: Dashboard → New → Blueprint → pick this repository.
+# You'll be asked for the values marked "sync: false".
+services:
+  - type: web
+    name: telegram-storage
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      # From @BotFather.
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      # Your Telegram user id (from "npm run setup" or your local .env).
+      # Also decides where database backups go when no storage channel is set.
+      - key: ALLOWED_TELEGRAM_USER_IDS
+        sync: false

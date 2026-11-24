@@ -1,0 +1,36 @@
+{
+  "name": "telegram-storage",
+  "version": "1.0.0",
+  "description": "A file and folder storage app that keeps your files in Telegram, with a web UI and a REST API.",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "setup": "node scripts/setup.js",
+    "dev": "concurrently -k -n api,web -c blue,magenta \"node --watch --disable-warning=ExperimentalWarning server/index.js\" \"vite --config web/vite.config.ts\"",
+    "build": "vite build --config web/vite.config.ts",
+    "start": "node --disable-warning=ExperimentalWarning server/index.js",
+    "typecheck": "tsc -p web/tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "busboy": "^1.6.0",
+    "express": "^5.3.0",
+    "mime-types": "^3.0.2",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/instrument-sans": "^5.3.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "concurrently": "^10.0.7",
+    "lucide-react": "^1.79.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8"
+  }
+}
